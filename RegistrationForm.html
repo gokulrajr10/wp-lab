@@ -13,20 +13,21 @@
             var password =
                 document.forms.RegForm.Password.value;
 
-            var regName = /^[A-Za-z]+$/;
+            var regName = /^[a-zA-Z]+$/;
+
             var regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
             var regPhone = /^\[0-9]{10,}$/;
 
-
-            if (name.length < 15 && regName.test(name)) {
-                window.alert("Please enter your name more than 15 Characters");
+            if ((name.length < 15) && regName.test(name)) {
+                return true;
+            }else{
+                window.alert("Please enter your name more than 15 Characters and should be ");
                 name.focus();
-                return false;
             }
 
             if (password.length < 8) {
-                alert("Password should be atleast 8 character long");
+                window.alert("Password should be atleast 8 character long");
                 password.focus();
                 return false;
             }
