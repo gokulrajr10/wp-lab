@@ -4,17 +4,13 @@
 <head>
     <title>Number to Words Converter</title>
     <script>
-        function convertNumberToWords() {
+        function converting() {
             var n = parseInt(document.getElementById("n").value);
             var res = document.getElementById("res");
-            var num = /^\[0-9]$/;
 
-            if(n == ""|| !num.test(n)){
-                window.alert("Please enter a valid number");
-                n.focus();
-                return false;
-            }
-            else if (n < 0 || n > 999) {
+            if (isNaN(n)) {
+                res.value = "not a number";
+            } else if (n < 0 || n > 999) {
                 res.value = "out of range";
             } else if (n == 0) {
                 res.value = "zero"
@@ -22,13 +18,13 @@
                 var words = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
                     "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
                 var tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
-
                 if (n < 20) {
                     res.value = words[n];
                 } else if (n >= 20 && n < 100) {
                     res.value = tens[Math.floor(n / 10)] + " " + words[n % 10];
                 } else {
-                    res.value = words[Math.floor(n / 100)] + " " + "hundred" + " " + tens[Math.floor((n % 100) / 10)] + " " + words[(n % 100) % 10];
+                    rem = n % 100
+                    res.value = words[Math.floor(n / 100)] + " " + "hundred" + " " + ((rem < 20) ? (words[n % 100]) : (tens[Math.floor((n % 100) / 10)] + " " + words[(n % 100) % 10]));
                 }
             }
         }
@@ -39,7 +35,7 @@
     <h1>Number to Words Converter</h1>
     <p>Enter a number between 0 and 999:</p>
     <input type="text" id="n">
-    <button onclick="convertNumberToWords()">Convert</button>
+    <button onclick="converting()">Convert</button>
     <p>Result:</p>
     <input type="text" id="res" readonly>
 </body>
