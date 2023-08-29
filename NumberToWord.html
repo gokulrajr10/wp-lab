@@ -7,8 +7,14 @@
         function convertNumberToWords() {
             var n = parseInt(document.getElementById("n").value);
             var res = document.getElementById("res");
+            var num = /^\[0-9]$/;
 
-            if (n < 0 || n > 999) {
+            if(n == ""|| !num.test(n)){
+                window.alert("Please enter a valid number");
+                n.focus();
+                return false;
+            }
+            else if (n < 0 || n > 999) {
                 res.value = "out of range";
             } else if (n == 0) {
                 res.value = "zero"
@@ -32,7 +38,7 @@
 <body>
     <h1>Number to Words Converter</h1>
     <p>Enter a number between 0 and 999:</p>
-    <input type="number" id="n">
+    <input type="text" id="n">
     <button onclick="convertNumberToWords()">Convert</button>
     <p>Result:</p>
     <input type="text" id="res" readonly>
