@@ -1,0 +1,31 @@
+table,
+td {
+    border: 1px solid white;
+}
+
+.body {
+
+    background-color: black;
+}
+
+.head {
+    text-align: center;
+    color: orangered;
+}
+
+.paragraph {
+    font-size: larger;
+    color: azure;
+}
+
+.break {
+    color: cyan;
+    font-size: x-large;
+}
+
+
+
+.table {
+    width: 50%;
+    color: azure;
+}
