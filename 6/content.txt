@@ -1,0 +1,9 @@
+Algorithm:
+
+1) Start the program.
+2) Create an HTML file with buttons for list and grid views, along with content containers for each view.
+3) Style buttons, content containers, and layout using CSS.
+4) Using JavaScript implement functions to switch between list and grid views, add event listeners to buttons for toggling, and apply an "active" class for the active view.
+5) Set the default view to grid when the page loads.
+6) Allow users to switch between views by clicking buttons, visually indicating the active view.
+7) Stop the program.
