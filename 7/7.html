@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details</title>
+    <script>
+        function getUserDetails() {
+            const userInput = document.getElementById("userId").value;
+            const xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    const xmlDoc = this.responseXML;
+                    const users = xmlDoc.getElementsByTagName("User");
+                    let userDetails = "User ID not found";
+
+                    for (let user of users) {
+                        const userId = user.querySelector('id').textContent;
+                        if (userId === userInput) {
+                            userDetails = {
+                                name: user.querySelector('name').textContent,
+                                age: user.querySelector('age').textContent,
+                                email: user.querySelector('email').textContent
+                            };
+                            break;
+                        }
+                    }
+
+                    document.getElementById('userDetails').innerHTML = JSON.stringify(userDetails, null, 2);
+                }
+            };
+
+            xhttp.open("GET", "7.xml", true);
+            xhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>Get User Details</h1>
+    <form onsubmit="event.preventDefault(); getUserDetails()">
+        <label for="userId">Enter User ID: </label>
+        <input type="text" id="userId">
+        <button type="submit">Get Details</button>
+    </form>
+    <pre id="userDetails"></pre>
+</body>
+</html>
