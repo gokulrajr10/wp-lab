@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<?xml version = "1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Solution11.16 -->
+<!-- Airline Reservation System-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Airline Reservation System</title>
+</head>
+<body>
+    <button onclick="startArray()">Book seats</button>
+    <div id='result'>
+    </div>
+    <script type="text/javascript">
+        var input;
+        var secondInput;
+        var element;
+        var secondElement;
+        var firstCount = 0;
+        var economyCount = 0;
+        var seats = [, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        const result = document.getElementById('result')
+        result.innerHTML = "test"
+        function startArray() {
+            input = window.prompt(
+                "Please type 1 for First Class and Please type 2 for Economy.",
+                "0"
+            );
+            if (input == 1 || input == 2) {
+                element = linearSearch(seats);
+                if (element == -1 && input == 1) {
+                    result.append("The First Class is already fully booked<br/>");
+                    secondQuestion(seats);
+                } else if (element == -1 && input == 2) {
+                    result.append("The Economy Class is already fully booked<br/>");
+                    secondQuestion(seats);
+                } else boardingPass(input);
+            } else {
+                window.status = "Bye-bye!";
+                System.exit(0);
+            }
+        }
+        function linearSearch(theArray) {
+            if (input == 1) {
+                for (var n = 0; n < 6; n++) if (theArray[n] == 0) return n;
+            } else if (input == 2) {
+                for (var n = 6; n < 11; n++) if (theArray[n] == 0) return n;
+            }
+            return -1;
+        }
+        function boardingPass(theInput) {
+            if (input == 1) {
+                result.append("----------BOARDING PASS----------<br/>");
+                result.append("You are allocated in the First Class<br/>");
+                result.append("Your seat number is " + element + "<br/>");
+                result.append("-----------------------------------------<br/>");
+                seats[element] = 1;
+                firstCount++;
+            } else if (input == 2) {
+                result.append("----------BOARDING PASS----------<br/>");
+                result.append("You are allocated in the EconomyClass<br/>");
+                result.append("Your seat number is " + element + "<br/>");
+                result.append("-----------------------------------------<br/>");
+                seats[element] = 1;
+                economyCount++;
+            }
+        }
+        function secondQuestion(theArray) {
+            if (input == 1) {
+                for (var n = 6; n < 11; n++) {
+                    if (theArray[n] == 0) {
+                        secondInput = window.prompt(
+                            "Do you want to move to Economy Class? (If YES, please press 1. If NO, please press 2)",
+                            "0"
+                        );
+                        if (secondInput == 1) {
+                            input = 2;
+                            element = linearSearch(seats);
+                            result.append(
+                                "You have been allocated to Economy Class<br/>"
+                            );
+                            boardingPass(input);
+                            break;
+                        } else if (secondInput == 2) {
+                            result.append("Next flight leaves in 3 hours<br/>");
+                            break;
+                        }
+                    }
+                }
+            } else if (input == 2) {
+                for (var n = 0; n < 6; n++) {
+                    if (theArray[n] == 0) {
+                        secondInput = window.prompt(
+                            "Do you want to move to First Class? (If YES, please press 1. If NO, please press 2)",
+                            "0"
+                        );
+                        for (var n = 0; n < 6; n++) {
+                            if (theArray[n] == 0) {
+                                secondInput = window.prompt(
+                                    "Do you want to move to First Class? (If YES, please press 1. If NO, please press 2)",
+                                    "0"
+                                );
+                                boardingPass(input);
+                                break;
+                            } else if (secondInput == 2) {
+                                result.append("Next flight leaves in 3 hours<br/>");
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
