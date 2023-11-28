@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Symposium Registration</title>
+</head>
+
+<body>
+
+  <h1>Symposium Registration Form</h1>
+
+  <form action="#" method="post">
+
+    <!-- Participant Details -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="college">College Name:</label>
+    <input type="text" id="college" name="college" required><br>
+
+    <label for="year">Year:</label>
+    <input type="text" id="year" name="year" required><br>
+
+    <label for="department">Department:</label>
+    <input type="text" id="department" name="department" required><br>
+
+    <!-- Radio Buttons for Technical/Non-Technical event -->
+    <p>Technical/Non-Technical event:</p>
+    <input type="radio" id="technical" name="eventType" value="Technical" required>
+    <label for="technical">Technical</label>
+    <input type="radio" id="nonTechnical" name="eventType" value="Non-Technical" required>
+    <label for="nonTechnical">Non-Technical</label><br>
+
+    <!-- Checkboxes for Accommodation and Fee details -->
+    <p>Accommodation:</p>
+    <input type="checkbox" id="accommodation" name="accommodation" value="Yes">
+    <label for="accommodation">Yes, I need accommodation</label><br>
+
+    <p>Fee details:</p>
+    <input type="checkbox" id="feePaid" name="feePaid" value="Paid">
+    <label for="feePaid">I have paid the registration fee</label><br>
+
+    <!-- Dropdown menu for fee payment method -->
+    <label for="paymentMethod">Payment Method:</label>
+    <select id="paymentMethod" name="paymentMethod">
+      <option value="creditCard">Credit Card</option>
+      <option value="debitCard">Debit Card</option>
+      <option value="paypal">PayPal</option>
+      <option value="bankTransfer">Bank Transfer</option>
+    </select><br>
+
+    <!-- Submit Button -->
+    <input type="submit" value="Submit">
+
+  </form>
+
+</body>
+
+</html>

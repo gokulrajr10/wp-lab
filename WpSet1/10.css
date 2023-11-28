@@ -1,0 +1,18 @@
+/* styles.css */
+
+body {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background-color: #f0f0f0;
+  color: #444;
+}
+
+h1 {
+  color: #e44d26;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px;
+  background-color: #fff;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="orderFormApp">
+
+<head>
+    <title>Order Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-controller="OrderFormController">
+        <h1>Order Form</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price | currency }}</td>
+                    <td>
+                        <input type="number" ng-model="item.quantity" ng-change="updateTotal()" min="0">
+                    </td>
+                    <td>{{ item.quantity * item.price | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Total: {{ total | currency }}</p>
+    </div>
+
+    <script>
+        angular.module('orderFormApp', [])
+            .controller('OrderFormController', function ($scope) {
+                $scope.items = [
+                    { name: 'Item 1', price: 10, quantity: 0 },
+                    { name: 'Item 2', price: 15, quantity: 0 },
+                    { name: 'Item 3', price: 20, quantity: 0 }
+                ];
+
+                $scope.total = 0;
+
+                $scope.updateTotal = function () {
+                    $scope.total = 0;
+                    for (var i = 0; i < $scope.items.length; i++) {
+                        $scope.total += $scope.items[i].quantity * $scope.items[i].price;
+                    }
+                };
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Image Page</title>
+  <style>
+    /* Style for hiding/showing description */
+    .image-description {
+      display: none;
+    }
+
+    /* Style for cursor on clickable image */
+    .clickable {
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    // JavaScript function to toggle display of description
+    function toggleDescription() {
+      var description = document.getElementById('imageDescription');
+      description.style.display = (description.style.display === 'none') ? 'block' : 'none';
+    }
+  </script>
+</head>
+
+<body>
+
+  <h1>Image Page</h1>
+
+  <!-- Clickable Image -->
+  <img src="your_image_url.jpg" alt="Image" class="clickable" onclick="toggleDescription()">
+
+  <!-- Image Description (initially hidden) -->
+  <div id="imageDescription" class="image-description">
+    <p>This is a description of the image.</p>
+  </div>
+
+</body>
+
+</html>

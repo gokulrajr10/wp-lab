@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <script>
+        function form() {
+            var name =
+                document.forms.RegForm.Name.value;
+            var email =
+                document.forms.RegForm.EMail.value;
+            var phone =
+                document.forms.RegForm.Telephone.value;
+            var password =
+                document.forms.RegForm.Password.value;
+
+            var regName = /^[a-zA-Z]+$/;
+
+            var regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+            var regPhone = /^\[0-9]{10,}$/;
+
+            if ((name.length < 15) && regName.test(name)) {
+                return true;
+            } else {
+                window.alert("Please enter your name more than 15 Characters and should be ");
+                name.focus();
+            }
+
+            if (password.length < 8) {
+                window.alert("Password should be atleast 8 character long");
+                password.focus();
+                return false;
+            }
+
+            if (email == "" || !regEmail.test(email)) {
+                window.alert("Please enter a valid e-mail address.");
+                email.focus();
+                return false;
+            }
+
+            if (phone == "" || !regPhone.test(phone)) {
+                alert("Please enter valid phone number.");
+                phone.focus();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+    <style>
+        div {
+            align-content: center;
+            align-items: center;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 600px;
+        }
+
+        fieldset {
+            border: none;
+            padding: 2rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">REGISTRATION FORM</h1>
+    <form name="RegForm" onsubmit="return form()" method="post">
+
+        <fieldset>
+            <label>Name:
+                <input type="text" size="65" name="Name" />
+            </label>
+            <br />
+            <br />
+            <label>Password:
+                <input type="password" size="65" name="Password" />
+            </label>
+            <br />
+            <br />
+            <label>E-mail id:
+                <input type="text" size="65" name="EMail" />
+            </label>
+            <br />
+            <br />
+            <label>Phone Number:
+                <input type="text" size="20" name="Telephone" />
+            </label>
+            <br />
+            <br />
+            <label>Date of Birth:
+                <input type="date" name="Dob">
+            </label>
+            <br />
+            <br />
+            <label>Languages known:<br />
+                <label><input type="checkbox">English</label><br />
+                <label><input type="checkbox">Tamil</label><br />
+                <label><input type="checkbox">Hindi</label><br />
+                <label><input type="checkbox">Telugu</label>
+            </label>
+            <br />
+            <br />
+            <label>Address: <br />
+                <textarea cols="30" rows="3"></textarea>
+            </label>
+            <br />
+        </fieldset>
+
+        <label>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </label>
+
+    </form>
+</body>
+
+</html>
